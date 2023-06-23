@@ -1,0 +1,56 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Spring Framework</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" 
+		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" 
+		crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
+</head>
+<!--
+	thymleaf 문법 https://makeaplayground.tistory.com/187
+	th:text="${}" : 일반텍스트 반환. HTML태그도 String값으로 반환
+	th:utext="${}" : 일반텍스트 반환. HTML태그 사용가능
+ -->
+<!-- 
+	session에 저장된 객체의 값 사용하기
+	1. ${session.객체이름.필드이름} : 세션에 저장된 객체의 필드속성의 값을 가져옴
+	2. ${객체이름.get필드명()} : 객체의 getter메서드를 직접 호출해 값 가녀옴
+ -->
+<body>
+	<div class="container" align="center">
+		<div class="mt-4 p-5 bg-success text-white rounded">
+			<h3>사용자정보</h3>
+			<!-- <h5><span class="bg bg-danger" th:text="${session.member.name}+'('+${session.member.id}+')'"></span>님 환영합니다</h5> -->
+			<h5><span class="bg bg-danger" th:text="|${session.member.name}(${member.getId()})|"></span>님 환영한다</h5>
+		</div>
+	</div>
+	
+	<div class="container col-3 mt-4">
+		<form action="">
+			<div class="col-2 input-group mb-3">
+				<div class="input-group-text"><i class="fas fa-user"></i></div>
+				<input type="text" name="id" class="form-control" th:value="${member.getId()}" disabled/>
+			</div>
+			<div class="col-2 input-group mb-3">
+				<div class="input-group-text"><i class="fas fa-address-book"></i></div>
+				<input type="text" name="name" class="form-control" th:value="${ member.getName() }" disabled>
+			</div>
+			<div class="col-2 mb-3 form-check start-0">
+			    <input type="checkbox" class="form-check-input" name="role" th:checked="${ member.getRole().toUpperCase() == 'ADMIN'}" disabled>
+			    <label class="form-check-label" for="role">Administrator</label>
+			</div>
+		</form>
+	</div>
+	
+	<div class="container" align="center">
+		<!-- th:href : 타임리프 템플릿 엔진을 사용해 동적으로 URL생성할수 있게 함
+						ex) 세션상태에 따라 다른 URL생성하거나, 템플릿 변수 사용해 URL을 동적으로 조작하는 등 -->
+		<a th:href="logout" class="btn btn-primary mt-3">로그아웃</a>
+		<a th:if="${member.getRole.toUpperCase() == 'ADMIN'}" th:href="getMemberList" class="btn btn-primary mt-3" th:with="sessionMember=${member}">사용자목록보기</a>
+		<a th:href="getBoardList" class="btn btn-primary mt-3">게시판목록보기</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Spring Framework</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
+	<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400&display=swap" rel="stylesheet" />
+  
+</head>
+<style>
+	/* 전체 */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    @font-face {
+      font-family: 'RIDIBatang';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      /* position: absolute; */
+      overflow: hidden;
+      /* background-color: green; */
+    }
+    ul {
+      list-style: none;
+      padding-left: 0px;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    a:hover {
+      color: gray;
+    }
+
+    /* 왼쪽 메뉴 */
+    #left {
+      background-color: rgb(231, 231, 231);
+      position: fixed;
+      padding: 40px;
+      margin: 40px;
+      font-family: 'PT Serif', serif;
+      font-size: large;
+    }
+    #leftStoreList {
+      font-size: small;
+      padding-left: 10%;
+      margin-top: 5px;
+      font-family: 'RIDIBatang', sans-serif;
+    }
+
+    #middle {
+      position: absolute;
+      width: 100%;
+      /* background-color: rgb(255, 0, 0); */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+</style>
+<body>
+	<div id="middle">
+		<div class="container" align="center">
+			회원가입 성공 <br />
+			<a class="btn btn-outline-secondary" href="home">MAIN PAGE</a>
+			<a class="btn btn-outline-secondary" href="login_member">LOGIN</a>
+		</div>
+	</div>
+	
+	<!-- 왼쪽 메뉴 -->
+    <div id="left">
+      <ul id="leftList">
+        <li th:unless="${session.loginss}">
+          <a href="login_member">LOGIN</a>
+        </li>
+        <li th:unless="${session.loginss}">
+          <a href="join">JOIN</a>
+        </li>
+        <li th:if="${session.loginss}">
+          <a href="logout">LOGOUT</a>
+        </li>
+        <li>
+          <a href="mypage">MY PAGE</a>
+        </li>
+        <li>
+          <a href="basket">BASKET</a>
+        </li>
+        <li>
+          <a href="about.html">ABOUT US</a>
+        </li>
+        <li>
+          <a href="store_phone">STORE</a>
+          <ul id="leftStoreList">
+            <li>
+              <a href="store_phone">폰케이스</a>
+            </li>
+            <li>
+              <a href="store_bluetooth">에어팟&버즈</a>
+            </li>
+            <li>
+              <a href="store_tok">스마트톡</a>
+            </li>
+            <li>
+              <a href="store_keyring">키링</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+</body>
+</html>

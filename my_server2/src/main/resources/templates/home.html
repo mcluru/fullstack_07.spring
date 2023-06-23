@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400&display=swap" rel="stylesheet" />
+    <title>Home</title>
+  </head>
+  <style>
+    /* 전체 */
+    @font-face {
+      font-family: 'RIDIBatang';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      position: absolute;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0px;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    a:hover{
+        color: gray;
+    }
+    
+    /* 왼쪽 메뉴 */
+    #left {
+      background-color: rgb(231, 231, 231);
+      position: absolute;
+      padding: 40px;
+      margin: 40px;
+      font-family: 'PT Serif', serif;
+      font-size: large;
+    }
+    #leftStoreList {
+      font-size: small;
+      padding-left: 10%;
+      margin-top: 5px;
+      font-family: 'RIDIBatang', sans-serif;
+    }
+
+    /* 배경 */
+    #bg-circle {
+      /* background-color: red; */
+      position: relative;
+      width: calc(100vw - 100px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+    .circle-guide {
+      position: absolute;
+      width: 110vmin;
+      height: 110vmin;
+      min-width: 800px;
+      min-height: 800px;
+      background-color: rgb(117, 117, 117);
+      border-radius: 100%;
+      margin-top: 1600px;
+      background-image: linear-gradient(rgba(253, 253, 253, 0.5), rgba(49, 102, 172, 0.7)), url(/img/moon3.png);
+      background-size: 115%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .circle-guide2 {
+      position: fixed;
+      width: 45vmin;
+      height: 45vmin;
+      background-color: rgb(153, 193, 231, 0.2);
+      border-radius: 100%;
+      margin-top: 900px;
+      margin-left: 800px;
+      background-size: 115%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .circle-guide3 {
+      position: fixed;
+      width: 40vmin;
+      height: 40vmin;
+      border-radius: 100%;
+      margin-top: 900px;
+      margin-left: 800px;
+      background-size: 115%;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: grayscale(50%);
+    }
+
+	/* 상단 로고 */
+    #logo {
+      position: absolute;
+      display: flex;
+      font-family: 'Rajdhani', sans-serif;
+      justify-content: center;
+      /* align-items: center; */
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0;
+      margin: 0;
+    }
+    #mainlogo {
+      /* position: absolute; */
+      font-size: 800%;
+      color: rgb(133, 140, 151);
+      font-weight: 300;
+      letter-spacing: 50px;
+    }
+    #sublogo {
+      margin-top: 140px;
+      position: absolute;
+      font-size: 200%;
+      font-weight: 400;
+      margin-bottom: 300px;
+      letter-spacing: 30px;
+      color: rgb(83, 83, 83);
+    }
+	
+	/* 하단 우측 관리자 */
+    #admin {
+      position: fixed;
+      bottom: 20px;
+      right: 40px;
+    }
+    #admin2 {
+      /* position: fixed; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    /* 상단 오른쪽 로그인정보 */
+    #top {
+      position: fixed;
+      display: flex;
+      top: 10px;
+      right: 50px;
+    }
+
+  </style>
+  <body>
+    <div>
+      <div id="logo">
+        <p id="mainlogo">SPATION</p>
+        <p id="sublogo">space station</p>
+      </div>
+
+      <div id="bg-circle" style="z-index: 0">
+        <div class="circle-guide"></div>
+        <div class="circle-guide2"></div>
+        <img class="circle-guide3" src="/img/moon1.png" alt="" />
+      </div>
+
+      <div id="admin">
+        <div id="admin2">
+          <img id="Barcode" src="/img/barcode.png" alt="Admin" width="180px" style="opacity: 50%" />
+          <a id="adminmain" style="font-family: 'RIDIBatang', sans-serif; opacity: 50%" th:unless="${session?.loginss?.role == 'USER'}" href="adminmain">관리자페이지</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 위쪽 메뉴 -->
+    <div id="top">
+      <th:block th:unless="${session.loginss}"><a href="login_member">LOGIN</a>｜<a href="join">JOIN</a></th:block>
+      <th:block th:if="${session.loginss}"><a href="mypage" th:text="|${session.loginss.name}님|"></a> ｜<a href="logout">LOGOUT</a></th:block>
+    </div>
+
+    <!-- 왼쪽 메뉴 -->
+    <div id="left">
+      <ul id="leftList">
+        <li th:unless="${session.loginss}">
+          <a href="login_member">LOGIN</a>
+        </li>
+        <li th:unless="${session.loginss}">
+          <a href="join">JOIN</a>
+        </li>
+        <li th:if="${session.loginss}">
+          <a href="logout">LOGOUT</a>
+        </li>
+        <li>
+          <a href="mypage">MY PAGE</a>
+        </li>
+        <li>
+          <a href="basket">BASKET</a>
+        </li>
+        <li>
+          <a href="about.html">ABOUT US</a>
+        </li>
+        <li>
+          <a href="store_phone">STORE</a>
+          <ul id="leftStoreList">
+            <li>
+              <a href="store_phone">폰케이스</a>
+            </li>
+            <li>
+              <a href="store_bluetooth">에어팟&버즈</a>
+            </li>
+            <li>
+              <a href="store_tok">스마트톡</a>
+            </li>
+            <li>
+              <a href="store_keyring">키링</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

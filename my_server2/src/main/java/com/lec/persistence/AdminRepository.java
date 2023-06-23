@@ -1,0 +1,15 @@
+package com.lec.persistence;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.lec.domain.Member;
+
+public interface AdminRepository extends JpaRepository<Member, String>{
+
+	Page<Member> findByIdContainingAndRole(String searchWord, String role, Pageable pageable);
+
+	Page<Member> findByNameContainingAndRole(String searchWord, String role, Pageable pageable);
+
+}
